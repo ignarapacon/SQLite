@@ -50,4 +50,27 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.rawQuery("SELECT * FROM points",null);
     }
+
+    public boolean update(String id, String fname, String lname, int point){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("Fname", fname);
+        cv.put("Lname", lname);
+        cv.put("Point", point);
+
+        db.update(TABLE, cv,"ID =?", new String[] {id});
+        return true;
+
+    }
+
+    public void delete (String id) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        return db.delete(TABLE,"ID=?", new String[] {id});
+
+
+
+
+    }
 }

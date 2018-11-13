@@ -82,6 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/btn_add"
         android:layout_centerHorizontal="true"
+        android:onClick="editRecord"
         android:text="UPDATE" />
 
     <Button
