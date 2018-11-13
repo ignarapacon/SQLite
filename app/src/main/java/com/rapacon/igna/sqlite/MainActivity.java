@@ -1,5 +1,6 @@
 package com.rapacon.igna.sqlite;
 
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,8 @@ public class MainActivity extends AppCompatActivity {
 
     DBHelper helper;
     EditText eFname, eLname, ePoints;
+    Cursor res;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
         eFname = findViewById(R.id.etFname);
         eLname = findViewById(R.id.etLname);
         ePoints = findViewById(R.id.etPoints);
+
+        res = helper.selectRecords();
     }
 
     public void insertRecord (View v){
@@ -34,6 +39,55 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "RECORD SAVED FAILED", Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void moveFirst (View v){
+
+        res.moveToFirst();
+        String fname = res.getString(1);
+        String lname = res.getString(2);
+        String point = res.getString(3);
+
+        eFname.setText(fname);
+        eLname.setText(lname);
+        ePoints.setText(point);
+    }
+
+    public void moveLast (View v){
+
+        res.moveToLast();
+        String fname = res.getString(1);
+        String lname = res.getString(2);
+        String point = res.getString(3);
+
+        eFname.setText(fname);
+        eLname.setText(lname);
+        ePoints.setText(point);
+    }
+
+    public void movePrevious (View v){
+
+        res.moveToPrevious();
+        String fname = res.getString(1);
+        String lname = res.getString(2);
+        String point = res.getString(3);
+
+        eFname.setText(fname);
+        eLname.setText(lname);
+        ePoints.setText(point);
+
+    }
+
+    public void moveNext (View v){
+
+        res.moveToNext();
+        String fname = res.getString(1);
+        String lname = res.getString(2);
+        String point = res.getString(3);
+
+        eFname.setText(fname);
+        eLname.setText(lname);
+        ePoints.setText(point);
 
     }
 

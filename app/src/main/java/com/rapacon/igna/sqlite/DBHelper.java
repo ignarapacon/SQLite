@@ -2,6 +2,7 @@ package com.rapacon.igna.sqlite;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -43,5 +44,10 @@ public class DBHelper extends SQLiteOpenHelper {
         } else {
             return true;
         }
+    }
+
+    public Cursor selectRecords(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.rawQuery("SELECT * FROM points",null);
     }
 }
